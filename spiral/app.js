@@ -8,9 +8,8 @@ var spiral_radius, centerX, centerY;
 function render(context, canvas){
   context.beginPath();
   //var angle_incr = phi;
-  /* TURN ON FOR VARIABLE AnglE
-  var angle_incr = Utils.degreeToRadian(1)
-  */
+  //var angle_incr = Utils.degreeToRadian(1);
+
   var particles = [];
   var angleBetweenPoints = 360 / MAX_POINTS;
   var angle_incr = Utils.degreeToRadian(angleBetweenPoints);
@@ -26,8 +25,7 @@ function render(context, canvas){
 
     context.lineTo(x, y);
   }
-
-
+  
   context.stroke();
 }
 
@@ -39,7 +37,6 @@ function startCallback(context, canvas){
 }
 
 function updateCallback(dt){
-  //golden_angle -= (dt/1000000);
   MAX_POINTS += dt/10;
 }
 

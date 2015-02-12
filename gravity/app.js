@@ -13,7 +13,7 @@ function addParticle(particle){
 function start(context, canvas){
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
-  
+
   for(var i = 0; i < MAX_PARTICLES; i++){
     var newParticle = new ParticleWithMass({
       mass : Utils.randomInteger(5, 10),
