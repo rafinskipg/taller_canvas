@@ -42,7 +42,6 @@ function render(context, canvas){
   var distanceBetweenPoints = (spiral_radius/ MAX_POINTS)
   
   for (var i = 1; i <= MAX_POINTS; ++i) {
-    var ratio = i / MAX_POINTS;
     var angle = i * angle_incr;
     var distanceFromCenter = i * distanceBetweenPoints;
     
