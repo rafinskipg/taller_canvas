@@ -4,30 +4,6 @@ var phi = ( 1 + Math.sqrt(5) ) / 2;
 var golden_angle = phi * 2 * Math.PI;
 var spiral_radius, centerX, centerY;
 
-function Petal(opts ){
-  this.height = opts.height ;
-  this.width = opts.width ? opts.width : opts.height * phi;
-  this.x = opts.x;
-  this.y = opts.y;
-  this.angle = opts.angle;
-  this.color = opts.color;
-}
-
-Petal.prototype.draw = function(context){
-  context.save();
-
-  context.translate(this.x, this.y);
-  context.rotate(Utils.degreeToRadian(this.angle));
-
-  context.beginPath();
-  context.arc(0, 0, this.width, 0, 2 * Math.PI);
-  context.closePath();
-
-  context.fillStyle = this.color;
-  context.fill();
-
-  context.restore();
-}
 
 function render(context, canvas){
   context.beginPath();
@@ -35,7 +11,7 @@ function render(context, canvas){
   /* TURN ON FOR VARIABLE AnglE
   var angle_incr = Utils.degreeToRadian(1)
   */
-
+  var particles = [];
   var angleBetweenPoints = 360 / MAX_POINTS;
   var angle_incr = Utils.degreeToRadian(angleBetweenPoints);
 
@@ -50,6 +26,7 @@ function render(context, canvas){
 
     context.lineTo(x, y);
   }
+
 
   context.stroke();
 }
@@ -66,7 +43,7 @@ function updateCallback(dt){
   MAX_POINTS += dt/10;
 }
 
-var myEngine = new Engine(canvas, true);
+var myEngine = new Engine(canvas, true, 1);
 //myEngine.setStartDelay(1000);
 myEngine.addStartCallback(startCallback);
 myEngine.addUpdateCallback(updateCallback);
